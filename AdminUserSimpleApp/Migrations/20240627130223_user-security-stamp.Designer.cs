@@ -4,6 +4,7 @@ using AdminUserSimpleApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdminUserSimpleApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240627130223_user-security-stamp")]
+    partial class usersecuritystamp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,18 +145,18 @@ namespace AdminUserSimpleApp.Migrations
                         {
                             Id = new Guid("b74ddd14-6340-4840-95c2-db12554843e5"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e79cd3a9-6c44-4d6b-99c0-1dcefc3fb48d",
+                            ConcurrencyStamp = "6f135b49-674e-4289-bd51-33d5a04bfcf9",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHt4IUqv0jowO0ggnc2ujMW2xTbzYSk2DOAhp3eiJ+Q4GL1mxYP94zlqsmez6KC7zA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELNt7AD+HMkvoM+P6CXcOyO8Q0zkx2J8Np3cGrOeO8qFeDraQvq/FT54VKxWoXv/MA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "1234567890",
                             TwoFactorEnabled = false,
-                            UserName = "Default Admin"
+                            UserName = "Admin"
                         });
                 });
 
