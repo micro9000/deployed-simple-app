@@ -47,11 +47,13 @@ public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, 
             new ApplicationRole() { 
                 Id = Guid.Parse("fab4fac1-c546-41de-aebc-a14da6895711"), 
                 Name = "Admin", 
+                Description = "Admin Role",
                 ConcurrencyStamp = "1", 
                 NormalizedName = "Admin" },
             new ApplicationRole() { 
                 Id = Guid.Parse("c7b013f0-5201-4317-abd8-c211f91b7330"), 
                 Name = "Client", 
+                Description = "Client Role",
                 ConcurrencyStamp = "2", 
                 NormalizedName = "Client" }
             );
@@ -59,8 +61,9 @@ public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, 
 
     private void SeedUserRoles(ModelBuilder builder)
     {
-        builder.Entity<IdentityUserRole<string>>().HasData(
-            new IdentityUserRole<string>() { RoleId = "fab4fac1-c546-41de-aebc-a14da6895711", UserId = "b74ddd14-6340-4840-95c2-db12554843e5" }
+        builder.Entity<IdentityUserRole<Guid>>().HasData(
+            new IdentityUserRole<Guid>() { RoleId = Guid.Parse("fab4fac1-c546-41de-aebc-a14da6895711"), 
+                UserId = Guid.Parse("b74ddd14-6340-4840-95c2-db12554843e5") }
             );
     }
 }
