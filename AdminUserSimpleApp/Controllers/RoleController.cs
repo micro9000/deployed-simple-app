@@ -178,11 +178,9 @@ public class RoleController : Controller
         return View(model);
     }
 
-
     [HttpPost]
     public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string roleId)
     {
-        //First check whether the Role Exists or not
         var role = await _roleManager.FindByIdAsync(roleId);
         if (role == null)
         {
@@ -195,20 +193,17 @@ public class RoleController : Controller
             IdentityResult? result;
             if (model[i].IsSelected && !(await _userManager.IsInRoleAsync(user, role.Name)))
             {
-                //If IsSelected is true and User is not already in this role, then add the user
                 result = await _userManager.AddToRoleAsync(user, role.Name);
             }
             else if (!model[i].IsSelected && await _userManager.IsInRoleAsync(user, role.Name))
             {
-                //If IsSelected is false and User is already in this role, then remove the user
                 result = await _userManager.RemoveFromRoleAsync(user, role.Name);
             }
             else
             {
-                //Don't do anything simply continue the loop
                 continue;
             }
-            //If you add or remove any user, please check the Succeeded of the IdentityResult
+
             if (result.Succeeded)
             {
                 if (i < (model.Count - 1))

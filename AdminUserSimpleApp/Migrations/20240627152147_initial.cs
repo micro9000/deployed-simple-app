@@ -33,6 +33,12 @@ namespace AdminUserSimpleApp.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BirthDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -170,8 +176,8 @@ namespace AdminUserSimpleApp.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("b74ddd14-6340-4840-95c2-db12554843e5"), 0, "c135f8fa-b803-4453-b570-dad4c8f6da6d", "admin@gmail.com", true, false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEOalMfmRuWe5kcBLSHxjjLaRRy9DS+BoajWmxJJMC5FiNh+zIuhkILBgp2kuIoMu7A==", "1234567890", false, null, false, "Admin" });
+                columns: new[] { "Id", "AccessFailedCount", "Address", "BirthDate", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsDeleted", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "Notes", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { new Guid("b74ddd14-6340-4840-95c2-db12554843e5"), 0, "Test", new DateOnly(1996, 5, 25), "82c18512-6bd3-47e9-bacf-61839a18e160", "admin123@gmail.com", true, "Raniel", false, "Garcia", false, null, "ADMIN123@GMAIL.COM", "ADMIN@2025", "test", "AQAAAAIAAYagAAAAEHv0OtJMav83WWQ3HbQYGzv2CX+G2HKAfSWnnXyZSi0cqVWTf+iMnjM3Sa3uQp5WSg==", "09979022241", true, "513163ce-890c-4bc6-bd2f-08ac63b01ecd", false, "admin@2025" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

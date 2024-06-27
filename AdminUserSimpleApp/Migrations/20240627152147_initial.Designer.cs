@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdminUserSimpleApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240627130223_user-security-stamp")]
-    partial class usersecuritystamp
+    [Migration("20240627152147_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,6 +84,12 @@ namespace AdminUserSimpleApp.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateOnly>("BirthDate")
+                        .HasColumnType("date");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -94,6 +100,15 @@ namespace AdminUserSimpleApp.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -108,6 +123,9 @@ namespace AdminUserSimpleApp.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -145,18 +163,24 @@ namespace AdminUserSimpleApp.Migrations
                         {
                             Id = new Guid("b74ddd14-6340-4840-95c2-db12554843e5"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6f135b49-674e-4289-bd51-33d5a04bfcf9",
-                            Email = "admin@gmail.com",
+                            Address = "Test",
+                            BirthDate = new DateOnly(1996, 5, 25),
+                            ConcurrencyStamp = "82c18512-6bd3-47e9-bacf-61839a18e160",
+                            Email = "admin123@gmail.com",
                             EmailConfirmed = true,
+                            FirstName = "Raniel",
+                            IsDeleted = false,
+                            LastName = "Garcia",
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@GMAIL.COM",
-                            NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAELNt7AD+HMkvoM+P6CXcOyO8Q0zkx2J8Np3cGrOeO8qFeDraQvq/FT54VKxWoXv/MA==",
-                            PhoneNumber = "1234567890",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "1234567890",
+                            NormalizedEmail = "ADMIN123@GMAIL.COM",
+                            NormalizedUserName = "ADMIN@2025",
+                            Notes = "test",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHv0OtJMav83WWQ3HbQYGzv2CX+G2HKAfSWnnXyZSi0cqVWTf+iMnjM3Sa3uQp5WSg==",
+                            PhoneNumber = "09979022241",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "513163ce-890c-4bc6-bd2f-08ac63b01ecd",
                             TwoFactorEnabled = false,
-                            UserName = "Admin"
+                            UserName = "admin@2025"
                         });
                 });
 

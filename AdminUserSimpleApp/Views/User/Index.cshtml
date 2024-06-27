@@ -1,0 +1,74 @@
+﻿@model UserListModel
+@{
+    ViewBag.Title = "All Roles";
+}
+<h1>All Users</h1>
+
+@if (Model.UsersWithRoles.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Notes</th>
+                <th scope="col">Birthdate</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Address</th>
+                <th scope="col">Roles</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.UsersWithRoles)
+        {
+                <tr>
+                    <th scope="row">@user.UserInfo.Email</th>
+                    <td>@user.UserInfo.FirstName</td>
+                    <td>@user.UserInfo.LastName</td>
+                    <td>@user.UserInfo.UserName</td>
+                    <td>@user.UserInfo.Notes</td>
+                    <td>@user.UserInfo.BirthDate.ToString("yyyy-MM-dd")</td>
+                    <td>@user.UserInfo.PhoneNumber</td>
+                    <td>@user.UserInfo.Address</td>
+                    <td>@string.Join(", ", user.Roles)</td>
+                    <td>
+                        <form asp-action="Delete" asp-route-userId="@user.UserInfo.Id" method="post">
+                            <a asp-controller="User" asp-action="Edit"
+                               asp-route-userId="@user.UserInfo.Id" class="btn btn-primary">
+                                Edit
+                            </a>
+                            <br/>
+                            <span id="confirmDeleteSpan_@user.UserInfo.Id" style="display:none">
+                                <span>Are you sure you want to Delete?</span>
+                                <button type="submit" class="btn btn-danger">Yes</button>
+                                <a href="#" class="btn btn-primary"
+                                   onclick="confirmDelete('@user.UserInfo.Id', false)">No</a>
+                            </span>
+                            <span id="deleteSpan_@user.UserInfo.Id">
+                                <a href="#" class="btn btn-danger"
+                                   onclick="confirmDelete('@user.UserInfo.Id', true)">Delete</a>
+                            </span>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<script>
+    function confirmDelete(uniqueId, isTrue) {
+        var deleteSpan = 'deleteSpan_' + uniqueId;
+        var confirmDeleteSpan = 'confirmDeleteSpan_' + uniqueId;
+        if (isTrue) {
+            $('#' + deleteSpan).hide();
+            $('#' + confirmDeleteSpan).show();
+        } else {
+            $('#' + deleteSpan).show();
+            $('#' + confirmDeleteSpan).hide();
+        }
+    }
+</script>

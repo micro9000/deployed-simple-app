@@ -25,14 +25,20 @@ public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, 
         ApplicationUser user = new ApplicationUser()
         {
             Id = Guid.Parse("b74ddd14-6340-4840-95c2-db12554843e5"),
-            UserName = "Default Admin",
-            Email = "admin@gmail.com",
-            NormalizedEmail = "ADMIN@GMAIL.COM",
-            NormalizedUserName = "ADMIN@GMAIL.COM",
+            UserName = "admin@2025",
+            Email = "admin123@gmail.com",
+            NormalizedEmail = "ADMIN123@GMAIL.COM",
+            NormalizedUserName = "ADMIN@2025",
             EmailConfirmed = true,
-            LockoutEnabled = false,
-            PhoneNumber = "1234567890",
-            SecurityStamp = "1234567890",
+            PhoneNumberConfirmed = true,
+            SecurityStamp = "513163ce-890c-4bc6-bd2f-08ac63b01ecd",
+            ConcurrencyStamp = "82c18512-6bd3-47e9-bacf-61839a18e160",
+            PhoneNumber = "09979022241",
+            FirstName = "Raniel",
+            LastName = "Garcia",
+            Address = "Test",
+            Notes = "test",
+            BirthDate = new DateOnly(1996, 05, 25)
         };
 
         PasswordHasher<ApplicationUser> passwordHasher = new PasswordHasher<ApplicationUser>();
