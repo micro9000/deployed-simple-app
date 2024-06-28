@@ -80,7 +80,9 @@ public class RoleController : Controller
             Users = new List<string>()
         };
 
-        foreach(var user in _userManager.Users.ToList())
+        var users = _userManager.Users.ToList();
+        var activeUsers = users.Where(u => !u.IsDeleted).ToList();
+        foreach (var user in activeUsers)
         {
             if (await _userManager.IsInRoleAsync(user, role.Name))
             {
@@ -158,7 +160,10 @@ public class RoleController : Controller
         }
         ViewBag.RollName = role.Name;
         var model = new List<UserRoleViewModel>();
-        foreach (var user in _userManager.Users.ToList())
+
+        var users = _userManager.Users.ToList();
+        var activeUsers = users.Where(u => !u.IsDeleted).ToList();
+        foreach (var user in activeUsers)
         {
             var userRoleViewModel = new UserRoleViewModel
             {

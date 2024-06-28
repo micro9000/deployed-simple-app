@@ -21,10 +21,11 @@ public class UserController : Controller
     public async Task<IActionResult> Index()
     {
         var users = await _userManager.Users.ToListAsync();
+        var activeUsers = users.Where(u => !u.IsDeleted).ToList();
         var roles = await _roleManager.Roles.ToListAsync();
 
         Dictionary<string, List<string>> userRolesMap = new Dictionary<string, List<string>>();
-        foreach(var user in users)
+        foreach(var user in activeUsers)
         {
             foreach (var role in roles)
             {
@@ -43,13 +44,24 @@ public class UserController : Controller
         }
 
         List<UserWithRoles> userWithRoles = new List<UserWithRoles>();
-        foreach (var user in users)
+        foreach (var user in activeUsers)
         {
-            userWithRoles.Add(new UserWithRoles
+            if (userRolesMap.ContainsKey(user.Email))
             {
-                UserInfo = user,
-                Roles = userRolesMap[user.Email].ToList()
-            });
+                userWithRoles.Add(new UserWithRoles
+                {
+                    UserInfo = user,
+                    Roles = userRolesMap[user.Email].ToList()
+                });
+            }
+            else
+            {
+                userWithRoles.Add(new UserWithRoles
+                {
+                    UserInfo = user,
+                    Roles = new List<string>()
+                });
+            }
         }
 
         var viewModel = new UserListModel
@@ -69,7 +81,9 @@ public class UserController : Controller
             ViewBag.ErrorMessage = $"User with Id = {userId} cannot be found";
             return View("NotFound");
         }
-        var result = await _userManager.DeleteAsync(user);
+
+        user.IsDeleted = true;
+        var result = await _userManager.UpdateAsync(user);
         if (result.Succeeded)
         {
             return RedirectToAction("Index");

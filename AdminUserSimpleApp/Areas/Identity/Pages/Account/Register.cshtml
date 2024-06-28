@@ -7,48 +7,98 @@
             <h2>Register new client.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <input asp-for="Input.EmailQueryString" hidden value="@(Model.Email ?? string.Empty)" />
+
             <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                @if (Model.CurrentUser != null)
+                {
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" value="@(Model.CurrentUser?.Email ?? string.Empty)" />
+                }
+                else
+                {
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                }
                 <label asp-for="Input.Email">Email</label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
 
             <div class="form-floating mb-3">
-                <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" aria-required="true" placeholder="First Name" />
+                @if (Model.CurrentUser != null)
+                {
+                    <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" aria-required="true" placeholder="First Name" value="@(Model.CurrentUser?.FirstName ?? string.Empty)" />
+                }
+                else
+                {
+                    <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" aria-required="true" placeholder="First Name"/>
+                }
                 <label asp-for="Input.FirstName">Firstname</label>
                 <span asp-validation-for="Input.FirstName" class="text-danger"></span>
             </div>
 
             <div class="form-floating mb-3">
-                <input asp-for="Input.LastName" class="form-control" autocomplete="lastName" aria-required="true" placeholder="Last Name" />
+                @if (Model.CurrentUser != null)
+                {
+                    <input asp-for="Input.LastName" class="form-control" autocomplete="lastName" aria-required="true" placeholder="Last Name" value="@(Model.CurrentUser?.LastName ?? string.Empty)" />
+                }
+                else
+                {
+                    <input asp-for="Input.LastName" class="form-control" autocomplete="lastName" aria-required="true" placeholder="Last Name" />
+                }
                 <label asp-for="Input.LastName">Lastname</label>
                 <span asp-validation-for="Input.LastName" class="text-danger"></span>
             </div>
 
             <div class="form-floating mb-3">
-                <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="phonenumber" aria-required="true" placeholder="#########" />
+                @if (Model.CurrentUser != null)
+                {
+                    <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="phonenumber" aria-required="true" placeholder="#########" value="@(Model.CurrentUser?.PhoneNumber ?? string.Empty)" />
+                }
+                else
+                {
+                    <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="phonenumber" aria-required="true" placeholder="#########" />
+                }
                 <label asp-for="Input.PhoneNumber">Phone Number</label>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
 
             <div class="form-floating mb-3">
-                <input asp-for="Input.Address" class="form-control" autocomplete="address" aria-required="true" />
+                @if (Model.CurrentUser != null)
+                {
+                    <input asp-for="Input.Address" class="form-control" autocomplete="address" aria-required="true" value="@(Model.CurrentUser?.Address ?? string.Empty)" />
+                }
+                else
+                {
+                    <input asp-for="Input.Address" class="form-control" autocomplete="address" aria-required="true" />
+                }
                 <label asp-for="Input.Address">Address</label>
                 <span asp-validation-for="Input.Address" class="text-danger"></span>
             </div>
 
             <div class="form-floating mb-3">
-                <textarea asp-for="Input.Notes" class="form-control" autocomplete="notes" aria-required="true"></textarea>
+                @if (Model.CurrentUser != null)
+                {
+                    <textarea class="form-control" id="@Html.IdFor(m => m.Input.Notes)" name="@Html.NameFor(m => m.Input.Notes)">@Model.CurrentUser?.Notes</textarea>
+                }
+                else
+                {
+                    <textarea asp-for="Input.Notes" class="form-control" aria-required="true">test</textarea>
+                }
                 <label asp-for="Input.Notes">Notes</label>
                 <span asp-validation-for="Input.Notes" class="text-danger"></span>
             </div>
 
             <div class="form-floating mb-3">
-                <input asp-for="Input.Birthdate" class="form-control" autocomplete="birthdate" aria-required="true" placeholder="yyyy/mm/dd" />
+                @if (Model.CurrentUser != null)
+                {
+                    <input asp-for="Input.Birthdate" class="form-control" autocomplete="birthdate" aria-required="true" placeholder="yyyy/mm/dd" value="@(Model.CurrentUser?.BirthDate.ToString("yyyy/MM/dd") ?? string.Empty)" />
+                }
+                else
+                {
+                    <input asp-for="Input.Birthdate" class="form-control" autocomplete="birthdate" aria-required="true" placeholder="yyyy/mm/dd" />
+                }
                 <label asp-for="Input.Birthdate">Birthdate: yyyy/mm/dd</label>
                 <span asp-validation-for="Input.Birthdate" class="text-danger"></span>
             </div>
-
 
             <div class="form-floating mb-3">
                 <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />

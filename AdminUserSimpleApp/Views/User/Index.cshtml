@@ -36,10 +36,8 @@
                     <td>@string.Join(", ", user.Roles)</td>
                     <td>
                         <form asp-action="Delete" asp-route-userId="@user.UserInfo.Id" method="post">
-                            <a asp-controller="User" asp-action="Edit"
-                               asp-route-userId="@user.UserInfo.Id" class="btn btn-primary">
-                                Edit
-                            </a>
+                            <a class="btn" id="register" asp-area="Identity" 
+                                asp-page="/Account/Register" asp-route-email="@user.UserInfo.Email">Edit</a>
                             <br/>
                             <span id="confirmDeleteSpan_@user.UserInfo.Id" style="display:none">
                                 <span>Are you sure you want to Delete?</span>

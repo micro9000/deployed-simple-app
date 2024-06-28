@@ -4,6 +4,7 @@ using AdminUserSimpleApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdminUserSimpleApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240627153202_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -170,13 +173,13 @@ namespace AdminUserSimpleApp.Migrations
                             LastName = "Garcia",
                             LockoutEnabled = false,
                             NormalizedEmail = "RANIELGARCIA@GMAIL.COM",
-                            NormalizedUserName = "RANIELGARCIA@GMAIL.COM",
+                            NormalizedUserName = "RANIELGARCIA",
                             Notes = "test",
-                            PasswordHash = "AQAAAAIAAYagAAAAECVFjviRCarp9FCOIArBJQQc3cAo8fTBaNFm1MDb3ZWtAH+7piZ9ey7WoZD7hMCzFQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO37DucB/5wLmzNnUUKWMY2rKhY1iU1euaj4rVvr4whLw3j9vgoxfMdRXrMtMmsjcA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "513163ce-890c-4bc6-bd2f-08ac63b01ecd",
                             TwoFactorEnabled = false,
-                            UserName = "ranielgarcia@gmail.com"
+                            UserName = "RanielGarcia"
                         });
                 });
 

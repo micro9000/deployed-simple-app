@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdminUserSimpleApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240627152147_initial")]
-    partial class initial
+    [Migration("20240627222332_update-seed-user-username")]
+    partial class updateseeduserusername
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,7 +60,7 @@ namespace AdminUserSimpleApp.Migrations
                         new
                         {
                             Id = new Guid("fab4fac1-c546-41de-aebc-a14da6895711"),
-                            ConcurrencyStamp = "1",
+                            ConcurrencyStamp = "8be259aa-fea6-430d-8589-8e63347b5fe9",
                             Description = "Admin Role",
                             Name = "Admin",
                             NormalizedName = "Admin"
@@ -68,7 +68,7 @@ namespace AdminUserSimpleApp.Migrations
                         new
                         {
                             Id = new Guid("c7b013f0-5201-4317-abd8-c211f91b7330"),
-                            ConcurrencyStamp = "2",
+                            ConcurrencyStamp = "a1974dc4-d377-400b-9125-b38f11148ab1",
                             Description = "Client Role",
                             Name = "Client",
                             NormalizedName = "Client"
@@ -166,21 +166,20 @@ namespace AdminUserSimpleApp.Migrations
                             Address = "Test",
                             BirthDate = new DateOnly(1996, 5, 25),
                             ConcurrencyStamp = "82c18512-6bd3-47e9-bacf-61839a18e160",
-                            Email = "admin123@gmail.com",
+                            Email = "ranielgarcia@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Raniel",
                             IsDeleted = false,
                             LastName = "Garcia",
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN123@GMAIL.COM",
-                            NormalizedUserName = "ADMIN@2025",
+                            NormalizedEmail = "RANIELGARCIA@GMAIL.COM",
+                            NormalizedUserName = "RANIELGARCIA@GMAIL.COM",
                             Notes = "test",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHv0OtJMav83WWQ3HbQYGzv2CX+G2HKAfSWnnXyZSi0cqVWTf+iMnjM3Sa3uQp5WSg==",
-                            PhoneNumber = "09979022241",
-                            PhoneNumberConfirmed = true,
+                            PasswordHash = "AQAAAAIAAYagAAAAECVFjviRCarp9FCOIArBJQQc3cAo8fTBaNFm1MDb3ZWtAH+7piZ9ey7WoZD7hMCzFQ==",
+                            PhoneNumberConfirmed = false,
                             SecurityStamp = "513163ce-890c-4bc6-bd2f-08ac63b01ecd",
                             TwoFactorEnabled = false,
-                            UserName = "admin@2025"
+                            UserName = "ranielgarcia@gmail.com"
                         });
                 });
 

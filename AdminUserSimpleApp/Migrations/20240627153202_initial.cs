@@ -170,14 +170,14 @@ namespace AdminUserSimpleApp.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("c7b013f0-5201-4317-abd8-c211f91b7330"), "2", "Client Role", "Client", "Client" },
-                    { new Guid("fab4fac1-c546-41de-aebc-a14da6895711"), "1", "Admin Role", "Admin", "Admin" }
+                    { new Guid("c7b013f0-5201-4317-abd8-c211f91b7330"), "a1974dc4-d377-400b-9125-b38f11148ab1", "Client Role", "Client", "Client" },
+                    { new Guid("fab4fac1-c546-41de-aebc-a14da6895711"), "8be259aa-fea6-430d-8589-8e63347b5fe9", "Admin Role", "Admin", "Admin" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "BirthDate", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsDeleted", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "Notes", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("b74ddd14-6340-4840-95c2-db12554843e5"), 0, "Test", new DateOnly(1996, 5, 25), "82c18512-6bd3-47e9-bacf-61839a18e160", "admin123@gmail.com", true, "Raniel", false, "Garcia", false, null, "ADMIN123@GMAIL.COM", "ADMIN@2025", "test", "AQAAAAIAAYagAAAAEHv0OtJMav83WWQ3HbQYGzv2CX+G2HKAfSWnnXyZSi0cqVWTf+iMnjM3Sa3uQp5WSg==", "09979022241", true, "513163ce-890c-4bc6-bd2f-08ac63b01ecd", false, "admin@2025" });
+                values: new object[] { new Guid("b74ddd14-6340-4840-95c2-db12554843e5"), 0, "Test", new DateOnly(1996, 5, 25), "82c18512-6bd3-47e9-bacf-61839a18e160", "ranielgarcia@gmail.com", true, "Raniel", false, "Garcia", false, null, "RANIELGARCIA@GMAIL.COM", "RANIELGARCIA", "test", "AQAAAAIAAYagAAAAEO37DucB/5wLmzNnUUKWMY2rKhY1iU1euaj4rVvr4whLw3j9vgoxfMdRXrMtMmsjcA==", null, false, "513163ce-890c-4bc6-bd2f-08ac63b01ecd", false, "RanielGarcia" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
