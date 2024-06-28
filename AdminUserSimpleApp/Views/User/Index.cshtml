@@ -30,7 +30,7 @@
                     <td>@user.UserInfo.LastName</td>
                     <td>@user.UserInfo.UserName</td>
                     <td>@user.UserInfo.Notes</td>
-                    <td>@user.UserInfo.BirthDate.ToString("yyyy-MM-dd")</td>
+                    <td>@user.UserInfo.BirthDate?.ToString("yyyy-MM-dd")</td>
                     <td>@user.UserInfo.PhoneNumber</td>
                     <td>@user.UserInfo.Address</td>
                     <td>@string.Join(", ", user.Roles)</td>

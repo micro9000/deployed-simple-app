@@ -106,19 +106,17 @@ namespace AdminUserSimpleApp.Areas.Identity.Pages.Account
 
             [Required]
             [Display(Name = "Phone number")]
+            [Range(0, int.MaxValue, ErrorMessage = "Please enter valid numeric characters")]
             public string PhoneNumber { get; set; }
 
-            [Required]
             [Display(Name = "Address")]
             public string Address { get; set; }
 
-            [Required]
             [Display(Name = "Notes")]
             public string Notes { get; set; }
 
-            [Required]
             [Display(Name = "Birthdate")]
-            public DateOnly Birthdate { get; set; }
+            public DateOnly? Birthdate { get; set; }
 
         }
 

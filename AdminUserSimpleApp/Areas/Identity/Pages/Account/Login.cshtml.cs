@@ -112,19 +112,18 @@ namespace AdminUserSimpleApp.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+                var userDetails = await _userManager.FindByEmailAsync(Input.Email);
+                if (userDetails != null && userDetails.IsDeleted)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return Page();
+                }
+
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    // Check if user is marked as deleted
-                    var user = await _userManager.FindByEmailAsync(Input.Email);
-                    if (user != null && user.IsDeleted)
-                    {
-                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                        return Page();
-                    }
-
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }

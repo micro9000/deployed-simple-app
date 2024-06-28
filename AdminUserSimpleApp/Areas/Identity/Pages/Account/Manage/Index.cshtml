@@ -9,19 +9,46 @@
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
     <div class="col-md-6">
-        <form id="profile-form" method="post">
+        @* <form id="profile-form" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
-                <label asp-for="Username" class="form-label"></label>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Please enter your phone number."/>
-                <label asp-for="Input.PhoneNumber" class="form-label"></label>
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-            </div>
+            
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
-        </form>
+        </form> *@
+
+        <div class="form-floating mb-3">
+            <input value="@Model.CurrentUser.Email" class="form-control" disabled />
+            <label asp-for="CurrentUser.Email" class="form-label"></label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input value="@Model.CurrentUser.FirstName" class="form-control" disabled />
+            <label asp-for="CurrentUser.FirstName" class="form-label"></label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input value="@Model.CurrentUser.LastName" class="form-control" disabled />
+            <label asp-for="CurrentUser.LastName" class="form-label"></label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input value="@Model.CurrentUser.PhoneNumber" class="form-control" disabled />
+            <label asp-for="CurrentUser.PhoneNumber" class="form-label"></label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input value="@Model.CurrentUser.Address" class="form-control" disabled />
+            <label asp-for="CurrentUser.Address" class="form-label"></label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input value="@Model.CurrentUser.Notes" class="form-control" disabled />
+            <label asp-for="CurrentUser.Notes" class="form-label"></label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input value="@Model.CurrentUser.BirthDate?.ToString("yyyy-MM-dd")" class="form-control" disabled />
+            <label asp-for="CurrentUser.BirthDate" class="form-label"></label>
+        </div>
     </div>
 </div>
 

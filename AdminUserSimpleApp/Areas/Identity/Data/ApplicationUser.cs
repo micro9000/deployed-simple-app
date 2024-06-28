@@ -10,7 +10,7 @@ public class ApplicationUser : IdentityUser<Guid>
     public string? LastName { get; set; }
     public string? Address { get; set; }
     public string? Notes { get; set; }
-    public DateOnly BirthDate { get; set; }
+    public DateOnly? BirthDate { get; set; }
 
     [DefaultValue(false)]
     public bool IsDeleted { get; set; }

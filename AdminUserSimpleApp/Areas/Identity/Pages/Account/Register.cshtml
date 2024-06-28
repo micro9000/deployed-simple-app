@@ -64,11 +64,11 @@
             <div class="form-floating mb-3">
                 @if (Model.CurrentUser != null)
                 {
-                    <input asp-for="Input.Address" class="form-control" autocomplete="address" aria-required="true" value="@(Model.CurrentUser?.Address ?? string.Empty)" />
+                    <input asp-for="Input.Address" class="form-control" autocomplete="address" value="@(Model.CurrentUser?.Address ?? string.Empty)" />
                 }
                 else
                 {
-                    <input asp-for="Input.Address" class="form-control" autocomplete="address" aria-required="true" />
+                    <input asp-for="Input.Address" class="form-control" autocomplete="address" />
                 }
                 <label asp-for="Input.Address">Address</label>
                 <span asp-validation-for="Input.Address" class="text-danger"></span>
@@ -81,7 +81,7 @@
                 }
                 else
                 {
-                    <textarea asp-for="Input.Notes" class="form-control" aria-required="true">test</textarea>
+                    <textarea asp-for="Input.Notes" class="form-control"></textarea>
                 }
                 <label asp-for="Input.Notes">Notes</label>
                 <span asp-validation-for="Input.Notes" class="text-danger"></span>
@@ -90,11 +90,11 @@
             <div class="form-floating mb-3">
                 @if (Model.CurrentUser != null)
                 {
-                    <input asp-for="Input.Birthdate" class="form-control" autocomplete="birthdate" aria-required="true" placeholder="yyyy/mm/dd" value="@(Model.CurrentUser?.BirthDate.ToString("yyyy/MM/dd") ?? string.Empty)" />
+                    <input asp-for="Input.Birthdate" class="form-control" autocomplete="birthdate" placeholder="yyyy/mm/dd" value="@(Model.CurrentUser?.BirthDate?.ToString("yyyy/MM/dd") ?? string.Empty)" />
                 }
                 else
                 {
-                    <input asp-for="Input.Birthdate" class="form-control" autocomplete="birthdate" aria-required="true" placeholder="yyyy/mm/dd" />
+                    <input asp-for="Input.Birthdate" class="form-control" autocomplete="birthdate" placeholder="yyyy/mm/dd" />
                 }
                 <label asp-for="Input.Birthdate">Birthdate: yyyy/mm/dd</label>
                 <span asp-validation-for="Input.Birthdate" class="text-danger"></span>
